@@ -9,7 +9,7 @@ from random import randint
 
 def get_prefix(client, message):
     try:
-        with open('data/prefixes.json', 'r') as f:
+        with open('prefixes.json', 'r') as f:
             prefixes = json.load(f)
 
         return prefixes[str(message.guild.id)]
@@ -47,9 +47,6 @@ async def servers(ctx):
     await ctx.send('Servers connected to:')
     for guild in bot.guilds:
         await ctx.send(guild.name)
-        await ctx.send(invites)
-
-
 
 @bot.command()
 @has_permissions(kick_members=True)
@@ -105,7 +102,7 @@ async def warn(ctx,user:discord.User,*reason:str):
       'name':user.name,
       'reasons': [reason,]
     })
-  with open('data/reports.json','w+') as f:
+  with open('reports.json','w+') as f:
     json.dump(report,f)
     await ctx.send("User Successfully warned!")
 
@@ -129,4 +126,4 @@ async def warnings(ctx,user:discord.User):
     await ctx.send(f"{user.name} has never been reported")
 
 
-bot.run("NzMyMTcyMjcxNzUzNDk0NTk5.XwwukA.ue2QzSfD_ne7V3eLjSQLI6Xo_x0")
+bot.run("TOKEN")
